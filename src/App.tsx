@@ -101,7 +101,7 @@ export const App = () => {
           </Typography.TitleResponsive>
         </div>
         <Typography.Text tag="p" view="primary-medium" color="secondary">
-          Выберите партнера и получите подарок за оформление детской карты
+          Получите подарок за оформление детской карты. Сначала выберите категорию. Выбор подарка будет доступен на следующем шаге.
         </Typography.Text>
 
         <div className={appSt.gifts}>
