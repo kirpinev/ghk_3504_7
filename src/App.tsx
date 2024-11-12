@@ -9,6 +9,7 @@ import { ThxLayout } from "./thx/ThxLayout";
 import { Gap } from "@alfalab/core-components/gap";
 import { StatusBadge } from "@alfalab/core-components/status-badge";
 import { useState } from "react";
+import {sendDataToGA} from "./utils/events.ts";
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export const App = () => {
 
   const submit = () => {
     setLoading(true);
-    Promise.resolve().then(() => {
+    sendDataToGA({ category: selected as string }).then(() => {
       LS.setItem(LSKeys.ShowThx, true);
       setThx(true);
       setLoading(false);
@@ -107,10 +108,10 @@ export const App = () => {
         <div className={appSt.gifts}>
           <div
             className={appSt.gift}
-            style={{ ...(selected === "nothing" && { borderColor: "black" }) }}
-            onClick={() => setSelected("nothing")}
+            style={{ ...(selected === "no_choice" && { borderColor: "black" }) }}
+            onClick={() => setSelected("no_choice")}
           >
-            {selected === "nothing" && (
+            {selected === "no_choice" && (
               <StatusBadge
                 key={20}
                 view="positive-checkmark"
@@ -129,10 +130,10 @@ export const App = () => {
           </div>
           <div
             className={appSt.gift}
-            style={{ ...(selected === "lamoda" && { borderColor: "black" }) }}
-            onClick={() => setSelected("lamoda")}
+            style={{ ...(selected === "marketplace" && { borderColor: "black" }) }}
+            onClick={() => setSelected("marketplace")}
           >
-            {selected === "lamoda" && (
+            {selected === "marketplace" && (
               <StatusBadge
                 key={20}
                 view="positive-checkmark"
@@ -150,10 +151,10 @@ export const App = () => {
           </div>
           <div
             className={appSt.gift}
-            style={{ ...(selected === "dodo" && { borderColor: "black" }) }}
-            onClick={() => setSelected("dodo")}
+            style={{ ...(selected === "food" && { borderColor: "black" }) }}
+            onClick={() => setSelected("food")}
           >
-            {selected === "dodo" && (
+            {selected === "food" && (
               <StatusBadge
                 key={20}
                 view="positive-checkmark"
@@ -171,10 +172,10 @@ export const App = () => {
           </div>
           <div
             className={appSt.gift}
-            style={{ ...(selected === "gj" && { borderColor: "black" }) }}
-            onClick={() => setSelected("gj")}
+            style={{ ...(selected === "clothes" && { borderColor: "black" }) }}
+            onClick={() => setSelected("clothes")}
           >
-            {selected === "gj" && (
+            {selected === "clothes" && (
               <StatusBadge
                 key={20}
                 view="positive-checkmark"
@@ -192,10 +193,10 @@ export const App = () => {
           </div>
           <div
             className={appSt.gift}
-            style={{ ...(selected === "lime" && { borderColor: "black" }) }}
-            onClick={() => setSelected("lime")}
+            style={{ ...(selected === "travel" && { borderColor: "black" }) }}
+            onClick={() => setSelected("travel")}
           >
-            {selected === "lime" && (
+            {selected === "travel" && (
               <StatusBadge
                 key={20}
                 view="positive-checkmark"
@@ -213,10 +214,10 @@ export const App = () => {
           </div>
           <div
             className={appSt.gift}
-            style={{ ...(selected === "deti" && { borderColor: "black" }) }}
-            onClick={() => setSelected("deti")}
+            style={{ ...(selected === "education" && { borderColor: "black" }) }}
+            onClick={() => setSelected("education")}
           >
-            {selected === "deti" && (
+            {selected === "education" && (
               <StatusBadge
                 key={20}
                 view="positive-checkmark"
@@ -230,27 +231,6 @@ export const App = () => {
               style={{ marginBottom: 0 }}
             >
               Образование
-            </Typography.Text>
-          </div>
-          <div
-            className={appSt.gift}
-            style={{ ...(selected === "litres" && { borderColor: "black" }) }}
-            onClick={() => setSelected("litres")}
-          >
-            {selected === "litres" && (
-              <StatusBadge
-                key={20}
-                view="positive-checkmark"
-                size={20}
-                className={appSt.checkMark}
-              />
-            )}
-            <Typography.Text
-              tag="p"
-              view="primary-small"
-              style={{ marginBottom: 0 }}
-            >
-              Спорт
             </Typography.Text>
           </div>
           <div
@@ -271,15 +251,36 @@ export const App = () => {
               view="primary-small"
               style={{ marginBottom: 0 }}
             >
+              Спорт
+            </Typography.Text>
+          </div>
+          <div
+            className={appSt.gift}
+            style={{ ...(selected === "pets" && { borderColor: "black" }) }}
+            onClick={() => setSelected("pets")}
+          >
+            {selected === "pets" && (
+              <StatusBadge
+                key={20}
+                view="positive-checkmark"
+                size={20}
+                className={appSt.checkMark}
+              />
+            )}
+            <Typography.Text
+              tag="p"
+              view="primary-small"
+              style={{ marginBottom: 0 }}
+            >
               Животные
             </Typography.Text>
           </div>
           <div
             className={appSt.gift}
-            style={{ ...(selected === "brain" && { borderColor: "black" }) }}
-            onClick={() => setSelected("brain")}
+            style={{ ...(selected === "health" && { borderColor: "black" }) }}
+            onClick={() => setSelected("health")}
           >
-            {selected === "brain" && (
+            {selected === "health" && (
               <StatusBadge
                 key={20}
                 view="positive-checkmark"
